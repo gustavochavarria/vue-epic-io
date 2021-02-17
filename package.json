@@ -1,0 +1,10 @@
+{
+  "name": "vue-epic-io",
+  "version": "0.0.1",
+  "description": "Easy vue intersection-observer for lazy-loading and Infinite-scrolls",
+  "main": "index.js",
+  "repository": "git@github.com:gustavochavarria/vue-epic-io.git",
+  "author": "GustavoChavarria <gchava92@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
