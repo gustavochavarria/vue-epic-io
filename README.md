@@ -22,9 +22,48 @@ The purpose of this component is to provide the simplest solution for observing 
 
 
 ## Options And Method
-| Name       | Type                     | Default  | Required                                                                              | Description                                                                                                                                                                                                                                                                                            |
-| ---------- | ------------------------ | -------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| root       | HTMLElement              | false    | default browser viewport is used as root if root is specified as null or unspecified. |
-| rootMargin | String                   | '0px'    | false                                                                                 | defines the margin of the root element, which is used to expand or reduce the size of the rootBounds rectangle and thus affects the size of the intersection area of the intersectionRect. It uses CSS definitions such as 10px 20px 30px 40px to represent the values of top, right, bottom and left. |
-| threshold  | Number or Array\<number> | 0        | false                                                                                 | The threshold property determines when the callback function is triggered. It is an array where each member is a threshold value, which defaults to [0], i.e. when the intersectionRatio reaches 0, the callback function is triggered.                                                                |
-| on-change  | Function                 | required | (entry, unobserve) => {}                                                              |
+| Name       | Type           | Default | Required                                                                              | Description                                                                                                                                                                                                                                                                                            |
+| ---------- | -------------- | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| root       | HTMLElement    | false   | default browser viewport is used as root if root is specified as null or unspecified. |
+| rootMargin | String         | '0px'   | false                                                                                 | defines the margin of the root element, which is used to expand or reduce the size of the rootBounds rectangle and thus affects the size of the intersection area of the intersectionRect. It uses CSS definitions such as 10px 20px 30px 40px to represent the values of top, right, bottom and left. |
+| threshold  | Array\<number> | [0]     | false                                                                                 | The threshold property determines when the callback function is triggered. It is an array where each member is a threshold value, which defaults to [0], i.e. when the intersectionRatio reaches 0, the callback function is triggered.                                                                |
+| disconnect | Boolean        | false   | Disable IntersectionObserver (remove)                                                 |
+| once       | Boolean        | false   | Force IntersectionObserver to Work Once                                               |
+
+
+## How to use
+
+### Like Lazy Load Component
+
+```js
+// Watch complete example in docs/examples
+
+<template>
+    <div v-for="(picture, index) in pictures">
+        <div style="height: 800px">
+            <vue-epic-io once>                
+                <img :src="picture" width="980px" height="800px" :key="index" />
+                
+                <template #loader>
+                    <div class="loader"></div>
+                </template>
+            </vue-epic-io>
+        </div>
+    </div>
+</template>
+
+<script>
+
+export default {
+    el: "#app",
+
+    data: {
+        pictures: [`imageurl`, `imageurl2`],
+    },
+}
+
+</script>
+
+
+```
+
