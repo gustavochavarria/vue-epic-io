@@ -1,7 +1,8 @@
 <template>
-  <div ref="getMoreRenderPost">
+  <div>
     <slot />
 
+    <div ref="main" />
     <slot name="loader" />
   </div>
 </template>
@@ -38,9 +39,10 @@ export default {
   methods: {
     disconnectObserver() {
       this.observer.disconnect();
+      this.observer = null;
     },
 
-    addMoreRender() {
+    hasIntersection() {
       this.$emit("hasIntersection");
     },
   },
@@ -54,13 +56,13 @@ export default {
   },
 
   mounted() {
-    const dom = this.$refs.getMoreRenderPost;
+    const dom = this.$refs.main;
 
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            this.addMoreRender();
+            this.hasIntersection();
           }
         });
       },

@@ -2,19 +2,21 @@
   "name": "vue-epic-io",
   "version": "0.0.1",
   "description": "Easy vue intersection-observer for lazy-loading and Infinite-scrolls",
-  "main": "index.js",
   "repository": "git@github.com:gustavochavarria/vue-epic-io.git",
   "author": "GustavoChavarria <gchava92@gmail.com>",
   "license": "MIT",
   "private": false,
-  "main": "dist/vue-epic-io.umd.js",
-  "module": "dist/vue-epic-io.esm.js",
-  "unpkg": "dist/vue-epic-io.min.js",
+  "main": "/dist/vue-epic-io.umd.js",
+  "module": "/dist/vue-epic-io.esm.js",
+  "unpkg": "/dist/vue-epic-io.min.js",
+  "browser": {
+    "./sfc": "src/Observer.vue"
+  },
   "scripts": {
-    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/my-component.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/my-component.esm.js",
-    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/my-component.min.js"
+    "build": "yarn run build:umd & yarn run build:es & yarn run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-epic-io.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-epic-io.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-epic-io.min.js"
   },
   "devDependencies": {
     "rollup": "^1.17.0",
@@ -23,5 +25,12 @@
     "rollup-plugin-vue": "^5.0.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "browserslist": [
+    "chrome >= 65",
+    "safari >= 12.1",
+    "not ie <=11",
+    "not dead"
+  ]
+
 }
