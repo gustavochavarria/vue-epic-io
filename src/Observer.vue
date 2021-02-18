@@ -59,8 +59,9 @@ export default {
     },
 
     hasIntersection() {
+      console.log("instersecting....", this.intersected);
       this.intersected++;
-      this.$emit("hasIntersection");
+      this.$emit("intersected");
 
       if (this.once) {
         this.disconnectObserver();
