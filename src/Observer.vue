@@ -1,8 +1,19 @@
 <template>
   <div>
-    <slot />
+    <template v-if="once">
+      <template v-if="intersected > 0">
+        <slot />
+      </template>
 
-    <slot name="loader" />
+      <slot name="loader" v-if="intersected < 1" />
+    </template>
+
+    <template v-else>
+      <slot />
+
+      <slot name="loader" />
+    </template>
+
     <div ref="main" />
   </div>
 </template>
@@ -28,11 +39,16 @@ export default {
       default: () => [0],
       type: Array,
     },
+    once: {
+      default: false,
+      type: Boolean,
+    },
   },
 
   data() {
     return {
       observer: null,
+      intersected: 0,
     };
   },
 
@@ -43,7 +59,12 @@ export default {
     },
 
     hasIntersection() {
+      this.intersected++;
       this.$emit("hasIntersection");
+
+      if (this.once) {
+        this.disconnectObserver();
+      }
     },
   },
 

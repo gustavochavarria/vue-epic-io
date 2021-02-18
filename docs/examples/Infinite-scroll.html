@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Demo - Vue epic io</title>
+    </head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        .loader {
+            margin: 10px auto;
+            border: 4px solid rgba(0,0,0,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+            border-left-color: blue;
+
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <body>
+        <div id="app">
+            <h1>Lazy Load</h1>
+
+            <div v-for="(picture, index) in pictures">
+                <div style="height: 800px">
+                    <vue-epic-io once>                
+                        <img :src="picture" width="980px" height="800px" :key="index" />
+                        
+                        <template #loader>
+                            <div class="loader"></div>
+                        </template>
+                    </vue-epic-io>
+                </div>
+               
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+        <script src="../dist/vue-epic-io.umd.js"></script>
+        <script src="./app.js"></script>
+    </body>
+</html>
