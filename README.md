@@ -44,7 +44,8 @@ The purpose of this component is to provide the simplest solution for observing 
 
 <template>
     <div v-for="(picture, index) in pictures">
-        <div style="height: 800px">
+        <!-- This height is important because, when we use once, the primary slot only render when has the first intersection -->
+        <div style="min-height: 780px">
             <vue-epic-io once>                
                 <img :src="picture" width="980px" height="800px" :key="index" />
                 
