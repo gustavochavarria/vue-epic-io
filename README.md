@@ -68,7 +68,71 @@ export default {
 }
 
 </script>
+```
+
+```js
+
+<template>
+    <vue-epic-io class="grid" @intersected="getMoreCaracters()">                
+        <div class="card" v-for="(character, index) in characters">
+            <img class="image" :src="character.image" width="200px" height="200px" :key="index" />
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{ character.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Status:</td>
+                        <td>{{ character.status }}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td>{{ character.gender }}</td>
+                    </tr>
+                </tbody>
+            </table>                
+        </div>
+
+        <template #loader>
+            <div class="loader"></div>
+        </template>
+    </vue-epic-io>
+<template>
+
+<script>
+    export default {
+        el: "#app",
+
+        data: {
+            characters: [],
+            next: "https://rickandmortyapi.com/api/character",
+            loading: false,
+        },
+
+        methods: {
+            getMoreCaracters() {
+                this.loading = true;
+
+                window
+                    .fetch(this.next)
+                    .then((data) => {
+                    if (data.ok) {
+                        return data.json();
+                    }
+                    })
+                    .then((data) => {
+                    this.characters = [...this.characters, ...(data.results || [])];
+                    this.next = data.info.next;
+                    })
+                    .finally(() => {
+                    this.loading = false;
+                    });
+                },
+        },
+    }
+</script>
 
 
 ```
-
