@@ -59,7 +59,6 @@ export default {
     },
 
     hasIntersection() {
-      console.log("instersecting....", this.intersected);
       this.intersected++;
       this.$emit("intersected");
 
