@@ -20,15 +20,19 @@ API that can be used to understand the visibility and position of DOM elements r
 
 The purpose of this component is to provide the simplest solution for observing the elements that enter the viewport on the Vue codebase. It is completely declarative, all complexity is abstracted away, and the focus is on reusability and low memory consumption.
 
+### Help us with:
+- Performance: Prevent render elements that the user don't use/watch in this moment.
+- Bandwidth reduction: Don't load elements that the user don't use/watch.
+
 
 ## Options And Method
-| Name       | Type           | Default | Required                                                                              | Description                                                                                                                                                                                                                                                                                            |
-| ---------- | -------------- | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| root       | HTMLElement    | false   | default browser viewport is used as root if root is specified as null or unspecified. |
-| rootMargin | String         | '0px'   | false                                                                                 | defines the margin of the root element, which is used to expand or reduce the size of the rootBounds rectangle and thus affects the size of the intersection area of the intersectionRect. It uses CSS definitions such as 10px 20px 30px 40px to represent the values of top, right, bottom and left. |
-| threshold  | Array\<number> | [0]     | false                                                                                 | The threshold property determines when the callback function is triggered. It is an array where each member is a threshold value, which defaults to [0], i.e. when the intersectionRatio reaches 0, the callback function is triggered.                                                                |
-| disconnect | Boolean        | false   | Disable IntersectionObserver (remove)                                                 |
-| once       | Boolean        | false   | Force IntersectionObserver to Work Once                                               |
+| Name       | Type           | Default | Required | Description                                                                                                                                                                                                                                                                                            |
+| ---------- | -------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| root       | HTMLElement    | false   | false    |
+| rootMargin | String         | '0px'   | false    | defines the margin of the root element, which is used to expand or reduce the size of the rootBounds rectangle and thus affects the size of the intersection area of the intersectionRect. It uses CSS definitions such as 10px 20px 30px 40px to represent the values of top, right, bottom and left. |
+| threshold  | Array\<number> | [0]     | false    | The threshold property determines when the callback function is triggered. It is an array where each member is a threshold value, which defaults to [0], i.e. when the intersectionRatio reaches 0, the callback function is triggered.                                                                |
+| disconnect | Boolean        | false   | false    | Disable IntersectionObserver (remove)                                                                                                                                                                                                                                                                  |
+| once       | Boolean        | false   | false    | Force IntersectionObserver to Work Once                                                                                                                                                                                                                                                                |
 
 
 ## How to use
