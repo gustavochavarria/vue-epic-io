@@ -2,14 +2,14 @@
   <div>
     <slot />
 
-    <div ref="main" />
     <slot name="loader" />
+    <div ref="main" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "IntersectionObserverComponent",
+  name: "VueEpicIo",
 
   props: {
     disconnect: {
