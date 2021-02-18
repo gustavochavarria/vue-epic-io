@@ -2,55 +2,122 @@
 
 <html>
     <head>
+        <meta name="description" content="Lazy load in Vuejs">
+        <meta name="keywords" content="vuejs, Lazy load, infinite-scroll, vue, vue-epic-io, intersection-observer">
+        <meta name="author" content="Gustavo Chavarria">
         <title>Demo - Vue epic io</title>
-    </head>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-        }
-
-        .loader {
-            margin: 10px auto;
-            border: 4px solid rgba(0,0,0,0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 100%;
-            border-left-color: blue;
-
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-    <body>
-        <div id="app">
-            <h1>Lazy Load</h1>
-
-            <div v-for="(picture, index) in pictures">
-                <div style="height: 800px">
-                    <vue-epic-io once>                
-                        <img :src="picture" width="980px" height="800px" :key="index" />
-                        
-                        <template #loader>
-                            <div class="loader"></div>
-                        </template>
-                    </vue-epic-io>
-                </div>
-               
-            </div>
-        </div>
-
+        
         <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
         <script src="../dist/vue-epic-io.umd.js"></script>
-        <script src="./app.js"></script>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+            }
+
+            .loader {
+                display: block;
+                margin: 10px auto;
+                border: 4px solid rgba(0,0,0,0.1);
+                width: 36px;
+                height: 36px;
+                border-radius: 100%;
+                border-left-color: blue;
+
+                animation: spin 1s ease-in-out infinite;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-gap: 10px;
+            }
+
+            .card { 
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                background-color: white;
+
+                border: 1px solid #60A5FA;
+                box-shadow: 2px 2px 2px #DBEAFE;
+                border-radius: 4px;
+
+                padding: 10px 1px;
+            }
+
+            .image {
+                border-radius: 50%;
+                object-fit: cover;
+                padding: 10px;
+            }
+
+            .counter {
+                background-color: rgba(0,0,0,0.1);
+                border-radius: 10px;
+                display: float;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+
+                padding: 20px;
+                margin: 10px;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>Rick and Morty Characters</h1>
+            <p>When you consume the first 20 step... <b>vue-epic-io</b> will load the next 20 characters</p>
+
+            <div class="counter">
+                Intersections: {{ counter }}
+                <br/>
+                Total Characters: {{ charactersCounter }} 
+            </div>
+
+            <vue-epic-io class="grid" @intersected="getMoreCaracters()">                
+                <div class="card" v-for="(character, index) in characters">
+                    <img class="image" :src="character.image" width="200px" height="200px" :key="index" />
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Name:</td>
+                                <td>{{ character.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Status:</td>
+                                <td>{{ character.status }}</td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td>{{ character.gender }}</td>
+                            </tr>
+                        </tbody>
+                    </table>                
+                </div>
+
+                <template #loader>
+                    <div class="loader"></div>
+                </template>
+            </vue-epic-io>
+        </div>
+
+        <script src="./app-rickandmorty.js"></script>
     </body>
 </html>

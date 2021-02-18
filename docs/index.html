@@ -2,37 +2,41 @@
 
 <html>
     <head>
+        <meta name="description" content="Lazy load in Vuejs">
+        <meta name="keywords" content="vuejs, Lazy load, infinite-scroll, vue, vue-epic-io, intersection-observer">
+        <meta name="author" content="Gustavo Chavarria">
         <title>Demo - Vue epic io</title>
+   
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                background-color:#F9FAFB
+    ;
+            }
+
+            body a {
+                font-size: 18px;
+                margin: 14px 0;
+            }
+
+            .card { 
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                background-color: white;
+
+                padding: 20px;
+
+                border: 1px solid #60A5FA;
+                box-shadow: 2px 2px 2px #DBEAFE;
+                border-radius: 4px;
+            }
+        </style>
     </head>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            background-color:#F9FAFB
-;
-        }
-
-        body a {
-            font-size: 18px;
-            margin: 14px 0;
-        }
-
-        .card { 
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            background-color: white;
-
-            padding: 20px;
-
-            border: 1px solid #60A5FA;
-            box-shadow: 2px 2px 2px #DBEAFE;
-            border-radius: 4px;
-        }
-    </style>
     <body>
         <div>
             <h2>Vue Epic Io - Examples</h2>
