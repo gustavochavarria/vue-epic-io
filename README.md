@@ -1,4 +1,8 @@
 # vue-epic-io
+
+[![npm version](https://badge.fury.io/js/vue-epic-io.svg)](https://badge.fury.io/js/vue-epic-io)
+
+
 Easy vue intersection observer
 
 Use for Lazy-Loading or Infinite Scrolls
