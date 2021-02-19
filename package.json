@@ -1,9 +1,10 @@
 {
   "name": "vue-epic-io",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Easy vue intersection-observer for lazy-loading and Infinite-scrolls",
   "repository": "git@github.com:gustavochavarria/vue-epic-io.git",
   "author": "GustavoChavarria <gchava92@gmail.com>",
+  "keywords": ["vuejs", "vue", "intersection-observer", "lazy loading", "infinite scroll"],
   "license": "MIT",
   "private": false,
   "main": "/dist/vue-epic-io.umd.js",
