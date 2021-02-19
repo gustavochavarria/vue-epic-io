@@ -42,7 +42,7 @@ The purpose of this component is to provide the simplest solution for observing 
 
 ## How to use
 
-You can see examples here: [https://gustavochavarria.github.io/vue-epic-io/](https://gustavochavarria.github.io/vue-epic-io/)
+You can see the examples here: [https://gustavochavarria.github.io/vue-epic-io/](https://gustavochavarria.github.io/vue-epic-io/)
 
 ### Like Lazy Load Component
 
